@@ -110,8 +110,8 @@ export default class DiscordTransport extends Transport {
       }]
     };
 
-    if (info.level === 'error' && info.error && info.error.stack) {
-      postBody.content = `\`\`\`${info.error.stack}\`\`\``;
+    if (info.data) {
+      postBody.content = `\`\`\`${info.data}\`\`\``;
     }
 
     if (this.defaultMeta) {
