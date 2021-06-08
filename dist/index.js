@@ -61,8 +61,8 @@ class DiscordTransport extends winston_transport_1.default {
                         timestamp: new Date().toISOString(),
                     }]
             };
-            if (info.data) {
-                postBody.content = `\`\`\`${info.data}\`\`\``;
+            if (info.level === 'error' && info.error && info.error.stack) {
+                postBody.content = `\`\`\`${info.error.stack}\`\`\``;
             }
             if (this.defaultMeta) {
                 Object.keys(this.defaultMeta).forEach(key => {
